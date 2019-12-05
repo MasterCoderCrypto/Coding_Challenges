@@ -38,7 +38,7 @@ class Stein:
         pygame.draw.rect(screen, self.color, (self.x, self.y, self.size, self.size))
 
     def move(self, x, y):
-        self.x  += x
+        self.x += x
         self.y += y
 
 class Snake:
