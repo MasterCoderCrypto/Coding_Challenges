@@ -40,7 +40,6 @@ class Zelle:
             pygame.draw.rect(screen, self.color, (self.draw_x, self.draw_y, blocksize, blocksize))
 
 zellen = {}
-besetzte = {}
 
 for g in range(height//blocksize):
     for t in range(width//blocksize):
