@@ -17,6 +17,8 @@ blocksize = 10
 
 randomize = False
 
+gen = 0
+
 fps = 27
 
 if '-r' in sys.argv:
@@ -26,6 +28,8 @@ if '-fps' in sys.argv:
     fps = int(sys.argv[sys.argv.index('-fps')+1])
 
 pre = True
+
+font = pygame.font.SysFont('Arial', 30)
 
 class Zelle:
     def __init__(self, x, y, alive=False):
@@ -40,6 +44,7 @@ class Zelle:
             pygame.draw.rect(screen, self.color, (self.draw_x, self.draw_y, blocksize, blocksize))
 
 zellen = {}
+besetzte = {}
 
 for g in range(height//blocksize):
     for t in range(width//blocksize):
@@ -74,6 +79,7 @@ def redraw():
     screen.fill((255, 255, 255))
     for el in zellen:
         zellen[el].draw(screen)
+    screen.blit(font.render('Generation: '+str(gen), True, const['RED']), (5, 5))
     pygame.display.update()
 
 while 1:
@@ -90,6 +96,7 @@ while 1:
 
     if not pre:
         generation()
+        gen += 1
 
     if pre:
         if m[0]:
