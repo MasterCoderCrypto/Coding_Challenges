@@ -90,6 +90,8 @@ while 1:
 
     if not pre:
         generation()
+        if keys[pygame.K_SPACE]:
+            pre = True
 
     if pre:
         if m[0]:
